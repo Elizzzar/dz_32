@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Book Catalog</div>
+        <form method="post" class="search-form">
+            {% csrf_token %}
+            {{ search_form }}
+            <button type="submit">Search</button>
+        </form>
+        <ul class="nav-links">
+            <li><a href="{% url 'catalog' %}">Home</a></li>
+            <li><a href="{% url 'add_book' %}">Add Book</a></li>
+        </ul>
+    </nav>
+    <div class="item-grid">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

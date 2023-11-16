@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Book Catalog</h1>
+    <div class="item-grid">
+        {% for book in books %}
+            <div class="item-card">
+                <div class="item-info">
+                    <h3 class="item-title"><a href="{% url 'book' book.pk %}">{{ book.name }}</a></h3>
+                    <p class="item-description">{{ book.description }}</p>
+                    <div class="item-price">Author: {{ book.author }}</div>
+                    <div class="item-price">Genre: {{ book.genre }}</div>
+                    <div class="item-price">Published Date: {{ book.published_date }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
